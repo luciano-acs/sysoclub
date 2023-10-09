@@ -67,12 +67,16 @@ class Socio{
             fecha: new Date()
         }
 
-        if(!this.cuotas.find(cuota => cuota.mes === mes)){
-            this.cuotas.push(cuota);
-            alert(`Cuota del periodo ${mes}/${año} abonada!`);
+        if((mes === '1' || mes === '2' || mes === '3' || mes === '4' || mes === '5' || mes === '6' || mes === '7' || mes === '8' || mes === '9' || mes === '10' || mes === '11' || mes === '12') && (año === '2023')){
+            if(!this.cuotas.find(cuota => cuota.mes === mes && cuota.año === año)){
+                this.cuotas.push(cuota);
+                alert(`Cuota del periodo ${mes}/${año} abonada!`);
+            }else{
+                alert(`La cuota del periodo ${mes}/${año} ya fue abonada`);
+            } 
         }else{
-            alert(`La cuota del periodo ${mes}/${año} ya fue abonada`);
-        }        
+            alert('Ingrese un periodo valido. Recuerde solo puede ser del corriente año!\nEjemplo: 1/2023 representa enero de este año');
+        }       
     }
 
     realizarReserva(lugar, estado){
@@ -92,16 +96,23 @@ class Socio{
 
     consultarCuotas() {
         const cuotasPagadas = this.cuotas.map(cuota => `${cuota.mes}/${cuota.año}`);
-        alert(`Las cuotas pagadas son: ${cuotasPagadas.join(', ')}`);
-
-        let cantidadCuotas = 12 - this.cuotas.length;
-
-        alert(`Les queda un total de ${cantidadCuotas} por abonar. La cual implica una deuda de $${cantidadCuotas*5000}`)
+        let cantidadCuotas = 0; 
+        if(this.cuotas.length !== 0){
+            alert(`Las cuotas pagadas son: ${cuotasPagadas.join(', ')}`);
+            cantidadCuotas = 12 - this.cuotas.length;
+            alert(`Les queda un total de ${cantidadCuotas} cuotas por abonar. La cuál implica una deuda de $${cantidadCuotas*5000}`);
+        }else{
+            alert(`No abonó ninguna cuota. La cuál implica una deuda de $${12*5000}`);
+        }        
     }
 
     consultarReservas() {
-        const reservasRealizadas = this.reservas.map(reserva => `Reserva de ${reserva.lugar} realizada el día ${reserva.fecha.toLocaleDateString()}`);
-        alert(`Las realizadas son: ${reservasRealizadas.join(', ')}\n`);
+        if(reservas.length !== 0){
+            const reservasRealizadas = this.reservas.map(reserva => `Reserva de ${reserva.lugar} realizada el día ${reserva.fecha.toLocaleDateString()}`);
+            alert(`Las realizadas son: ${reservasRealizadas.join(', ')}\n`);
+        }else{
+            alert('No tiene reserva a su nombre');
+        }        
     }
 }
 
