@@ -107,7 +107,7 @@ class Socio{
     }
 
     consultarReservas() {
-        if(reservas.length !== 0){
+        if(this.reservas.length !== 0){
             const reservasRealizadas = this.reservas.map(reserva => `Reserva de ${reserva.lugar} realizada el día ${reserva.fecha.toLocaleDateString()}`);
             alert(`Las realizadas son: ${reservasRealizadas.join(', ')}\n`);
         }else{
