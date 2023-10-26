@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+$azul: #0b345a;
+$verde: #448b54;
+$verde-claro: #64bc6c;
+$negro: #000000;
+$negro-transparente: rgba(0, 0, 0, 0.6);
+$azul-transparente: rgba(11, 52, 90, 0.9);
+$blanco: #ffffff;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background: url('../assets/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $negro-transparente;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px 0;   
+    border: 1px solid $verde-claro;
+    border-radius: 15px; 
+    .logo{
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        img{
+        width: 75px;
+        height: 75px;
+        }
+    }
+    nav{
+        width: 80%;
+        height: 75px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        ul{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 0;
+            li{
+                list-style: none;
+                margin: 0 10px;
+                button{
+                    background-color: transparent;
+                    border: none;
+                    color: $blanco;
+                    &:hover{
+                        color: $verde-claro;
+                        font-weight: bold;                        
+                        text-decoration: none;
+                    }
+                }
+                h2{
+                    font-size: 20px;
+                    color: $blanco;
+                    margin-bottom: 0;
+                }
+                img{
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+main{
+    margin: 30px 0px 70px 0px;
+    .form-login, .form-register{
+        width: 400px;
+        height: auto;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: $azul;
+        border-top: 2px solid $verde-claro;
+        border-left: 2px solid $verde-claro;
+        border-radius: 15px;
+        box-shadow: 7px 10px 25px $verde;
+        padding: 15px;
+        h2{
+            width: 100%;
+            color: $blanco;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 35px;
+            padding: 15px 0;
+            border-bottom: 2px solid $blanco;
+        }
+        input{
+            width: 80%;
+            height: 30px;
+            margin-bottom: 30px;
+            background-color: $blanco;
+            padding: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+        .mensaje{
+            font-size: 12px;
+            color: $blanco;
+        }
+    }
+
+    .button-login{
+        width: 50%;
+        height: 30px;
+        background-color: $verde;
+        color: $blanco;
+        border: 1px solid $negro;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+
+    .presentacion{
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        padding-bottom: 25px;
+        .fotos{
+            width: 50%;
+            height: 400px;
+            display: grid;
+            justify-content: center;
+            grid-template-columns: repeat(4, 25%);
+            grid-template-rows: repeat(1, 100%);
+            .item{
+                background-size: cover;
+                background-position: center;                
+            }
+            
+        }
+        .item1{
+            background: url('../assets/hockey-2330582_1280.jpg');
+            border-left: 2px solid $blanco;
+            border-radius: 10px 0 0 10px;
+        }
+        .item2{
+            background: url('../assets/pexels-pixabay-261060.jpg');
+        } 
+        .item3{
+            background: url('../assets/pexels-wallace-chuck-2834917.jpg');
+        } 
+        .item4{
+            background: url('../assets/soccer-3471402_1280.jpg');
+        }
+        .editorial{
+            width: 50%;
+            height: 400px;
+            background-color: $azul-transparente;
+            border: 2px solid $verde-claro;
+            border-radius: 0 10px 10px 0;
+            h1{
+                text-align: center;
+                color: $blanco;
+                padding: 25px;
+                font-weight: bold;
+            }
+            p{
+                text-align: justify;
+                color: $blanco;
+                padding: 10px 25px;
+            }
+        } 
+    }
+
+    .logo-index{
+        width: 90%;
+        height: 300px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border-top: 1px solid $blanco;
+        img{
+            width: 250px;
+            height: auto;
+            padding: 15px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        h2{
+            background-color: $negro-transparente;
+            padding: 10px;
+            border-radius: 10px;
+            p{
+                color: $blanco;
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 40px;
+                cursor: pointer;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .menu-buttons{
+        width: 90%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0 auto;
+        background-color: $azul-transparente;
+        padding: 15px 10px 10px 10px;
+        border-radius: 10px;
+        button{
+            width: 180px;
+            background-color: $verde-claro;
+            height: 60px;
+            border-radius: 10px;
+            border: 2px solid $azul;
+            &:hover{
+                box-shadow: 0px 0px 10px $blanco;
+            }
+            p{
+                color: $negro;
+                text-decoration: none;
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .pagos{
+        width: 90%;
+        min-height: 350px;
+        background-color: $azul-transparente;
+        margin: 0 auto;
+        border-radius: 0 0 10px 10px;
+        th, td, tr{
+            color: $blanco;
+            text-align: center;
+            button{
+                background-color: $verde;
+                color: $blanco;
+                border: 0;
+                border-radius: 10px;
+                width: 100%;
+                font-weight: bold;
+                box-shadow: 2px 3px 5px $negro-transparente;
+            }
+        }
+    }
+
+    .reserva{
+        width: 90%;
+        min-height: 350px;
+        background-color: $azul-transparente;
+        margin: 0 auto;
+        border-radius: 0 0 10px 10px;
+        h2{
+            color: $blanco;
+            text-align: center;
+            padding: 10px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .card-container{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            .card-reserva{
+                width: 25%;
+                height: 500px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;    
+                margin: 10px 10px 20px 10px;
+                background-color: $verde;
+                border-radius: 10px;
+                h2{
+                    margin: 0 auto;
+                    color: $negro;
+                    font-size: 25px;
+                    height: 50px;
+                }
+                img{
+                    height: 200px;
+                    width: 100%;
+                    object-fit: cover;
+                }
+                form{
+                    width: 100%;
+                    height: 250px;                  
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    padding: 10px 15px 15px 15px;
+                    label{
+                        margin-bottom: 0;
+                        height: 5px;
+                        font-weight: bold;
+                    }
+                    input{
+                        width: 100%;
+                        height: 25px;
+                    }
+                    .btn-reserva{
+                        width: 100%;
+                        height: 30px;
+                        background-color: $negro;
+                        color: $blanco;
+                        border: 1px solid $negro;
+                        border-radius: 10px;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+footer{
+    width: 90%;
+    height: 50px;
+    margin: 10px auto;
+    background-color: $negro-transparente;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border: 1px solid $verde-claro;
+    border-radius: 5px;
+    .copyright{
+        width: 60%;
+        color: $blanco;
+        margin-bottom: 0;
+        p{
+            font-weight: bold;
+            margin-bottom: 0;
+            font-size: 12px;
+            padding: 0 15px;
+        }
+    }
+    .redes{
+        display: flex;
+        justify-content: flex-end;
+        width: 40%;
+        padding-right: 15px;
+        i{
+            color: $blanco;
+            padding: 0 5px;
+        }
+    }
+}
+

@@ -1,5 +1,356 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
+
+body {
+  background: url("../assets/fondo.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 90%;
+  margin: 10px auto;
+  padding: 10px 0;
+  border: 1px solid #64bc6c;
+  border-radius: 15px;
+}
+header .logo {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+header .logo img {
+  width: 75px;
+  height: 75px;
+}
+header nav {
+  width: 80%;
+  height: 75px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+header nav ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0;
+}
+header nav ul li {
+  list-style: none;
+  margin: 0 10px;
+}
+header nav ul li button {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+}
+header nav ul li button:hover {
+  color: #64bc6c;
+  font-weight: bold;
+  text-decoration: none;
+}
+header nav ul li h2 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 0;
+}
+header nav ul li img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+main {
+  margin: 30px 0px 70px 0px;
+}
+main .form-login, main .form-register {
+  width: 400px;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0b345a;
+  border-top: 2px solid #64bc6c;
+  border-left: 2px solid #64bc6c;
+  border-radius: 15px;
+  box-shadow: 7px 10px 25px #448b54;
+  padding: 15px;
+}
+main .form-login h2, main .form-register h2 {
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 35px;
+  padding: 15px 0;
+  border-bottom: 2px solid #ffffff;
+}
+main .form-login input, main .form-register input {
+  width: 80%;
+  height: 30px;
+  margin-bottom: 30px;
+  background-color: #ffffff;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+main .form-login .mensaje, main .form-register .mensaje {
+  font-size: 12px;
+  color: #ffffff;
+}
+main .button-login {
+  width: 50%;
+  height: 30px;
+  background-color: #448b54;
+  color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+main .presentacion {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  padding-bottom: 25px;
+}
+main .presentacion .fotos {
+  width: 50%;
+  height: 400px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(1, 100%);
+}
+main .presentacion .fotos .item {
+  background-size: cover;
+  background-position: center;
+}
+main .presentacion .item1 {
+  background: url("../assets/hockey-2330582_1280.jpg");
+  border-left: 2px solid #ffffff;
+  border-radius: 10px 0 0 10px;
+}
+main .presentacion .item2 {
+  background: url("../assets/pexels-pixabay-261060.jpg");
+}
+main .presentacion .item3 {
+  background: url("../assets/pexels-wallace-chuck-2834917.jpg");
+}
+main .presentacion .item4 {
+  background: url("../assets/soccer-3471402_1280.jpg");
+}
+main .presentacion .editorial {
+  width: 50%;
+  height: 400px;
+  background-color: rgba(11, 52, 90, 0.9);
+  border: 2px solid #64bc6c;
+  border-radius: 0 10px 10px 0;
+}
+main .presentacion .editorial h1 {
+  text-align: center;
+  color: #ffffff;
+  padding: 25px;
+  font-weight: bold;
+}
+main .presentacion .editorial p {
+  text-align: justify;
+  color: #ffffff;
+  padding: 10px 25px;
+}
+main .logo-index {
+  width: 90%;
+  height: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-top: 1px solid #ffffff;
+}
+main .logo-index img {
+  width: 250px;
+  height: auto;
+  padding: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+main .logo-index h2 {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 10px;
+}
+main .logo-index h2 p {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 40px;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+main .menu-buttons {
+  width: 90%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  background-color: rgba(11, 52, 90, 0.9);
+  padding: 15px 10px 10px 10px;
+  border-radius: 10px;
+}
+main .menu-buttons button {
+  width: 180px;
+  background-color: #64bc6c;
+  height: 60px;
+  border-radius: 10px;
+  border: 2px solid #0b345a;
+}
+main .menu-buttons button:hover {
+  box-shadow: 0px 0px 10px #ffffff;
+}
+main .menu-buttons button p {
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+main .pagos {
+  width: 90%;
+  min-height: 350px;
+  background-color: rgba(11, 52, 90, 0.9);
+  margin: 0 auto;
+  border-radius: 0 0 10px 10px;
+}
+main .pagos th, main .pagos td, main .pagos tr {
+  color: #ffffff;
+  text-align: center;
+}
+main .pagos th button, main .pagos td button, main .pagos tr button {
+  background-color: #448b54;
+  color: #ffffff;
+  border: 0;
+  border-radius: 10px;
+  width: 100%;
+  font-weight: bold;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.6);
+}
+main .reserva {
+  width: 90%;
+  min-height: 350px;
+  background-color: rgba(11, 52, 90, 0.9);
+  margin: 0 auto;
+  border-radius: 0 0 10px 10px;
+}
+main .reserva h2 {
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+main .reserva .card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+main .reserva .card-container .card-reserva {
+  width: 25%;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px 10px 20px 10px;
+  background-color: #448b54;
+  border-radius: 10px;
+}
+main .reserva .card-container .card-reserva h2 {
+  margin: 0 auto;
+  color: #000000;
+  font-size: 25px;
+  height: 50px;
+}
+main .reserva .card-container .card-reserva img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+main .reserva .card-container .card-reserva form {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px 15px 15px 15px;
+}
+main .reserva .card-container .card-reserva form label {
+  margin-bottom: 0;
+  height: 5px;
+  font-weight: bold;
+}
+main .reserva .card-container .card-reserva form input {
+  width: 100%;
+  height: 25px;
+}
+main .reserva .card-container .card-reserva form .btn-reserva {
+  width: 100%;
+  height: 30px;
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+
+footer {
+  width: 90%;
+  height: 50px;
+  margin: 10px auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border: 1px solid #64bc6c;
+  border-radius: 5px;
+}
+footer .copyright {
+  width: 60%;
+  color: #ffffff;
+  margin-bottom: 0;
+}
+footer .copyright p {
+  font-weight: bold;
+  margin-bottom: 0;
+  font-size: 12px;
+  padding: 0 15px;
+}
+footer .redes {
+  display: flex;
+  justify-content: flex-end;
+  width: 40%;
+  padding-right: 15px;
+}
+footer .redes i {
+  color: #ffffff;
+  padding: 0 5px;
+}
+
+/*# sourceMappingURL=style.css.map */
