@@ -1,3 +1,4 @@
+//Components
 import { Inicio } from "./components/inicio.js";
 import { Asociate } from "./components/Asociate.js";
 import { Login } from "./components/Login.js";
@@ -6,6 +7,11 @@ import { Reserva } from "./components/Reserva.js";
 import { Perfil } from "./components/Perfil.js";
 import { Pago } from "./components/Pago.js";
 import { Socios } from "./helpers/data.js";
+
+//Helpers
+import { ExisteUsuarioContraseña } from "./helpers/existeUsuarioContraseña.js";
+import { BusquedaSocio } from "./helpers/busquedaSocio.js";
+import { Registrarse } from "./helpers/resgistrarse.js";
 
 export const App = () => {
     let appRoot = document.querySelector('#root');
@@ -43,118 +49,18 @@ export const App = () => {
     const buttonRegister = document.querySelector('#btn-registro');
     buttonRegister.addEventListener('click', () => {
         changeRoute('registro');
-
-        const existeUsuario = (user) => {
-            if (Socios.some(socio => {
-                return socio['usuario'] === user;
-            })) {
-                return true;
-            } else {
-                return false;
-            };
-        };
-
-        const formRegistro = document.querySelector('#form-register');
-        formRegistro.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const nombre = formRegistro.nombre.value;
-            const apellido = formRegistro.apellido.value;
-            const dni = parseInt(formRegistro.dni.value);
-            const direccion = formRegistro.direccion.value;
-            const telefono = formRegistro.telefono.value;
-            const usuario = formRegistro.email.value;
-            const contraseña = formRegistro.contraseña.value;
-
-            let mensajeRegistro = document.querySelector('#mensajeRegistro');
-            if (existeUsuario(usuario) === false) {
-                const nuevoSocio = {
-                    nombre: nombre,
-                    apellido: apellido,
-                    dni: dni,
-                    direccion: direccion,
-                    telefono: telefono,
-                    usuario: usuario,
-                    contraseña: contraseña,
-                    cuotas: [],
-                    reservas: [],
-                    foto: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
-                };
-                console.log(nuevoSocio);
-                Socios.push(nuevoSocio);
-
-                mensajeRegistro.innerHTML = 'Usuario registrado con exito. Inicie sesión';
-            } else {
-                mensajeRegistro.innerHTML = 'Usuario ya registrado. Inicie sesión';
-            }
-        });
+        Registrarse({socios: Socios});
     });
 
     const buttonAsociate = document.querySelector('#btn-asociate');
     buttonAsociate.addEventListener('click', () => {
         changeRoute('registro');
-        const existeUsuario = (user) => {
-            if (Socios.some(socio => {
-                return socio['usuario'] === user;
-            })) {
-                return true;
-            } else {
-                return false;
-            };
-        };
-
-        const formRegistro = document.querySelector('#form-register');
-        formRegistro.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const nombre = formRegistro.nombre.value;
-            const apellido = formRegistro.apellido.value;
-            const dni = parseInt(formRegistro.dni.value);
-            const direccion = formRegistro.direccion.value;
-            const telefono = formRegistro.telefono.value;
-            const usuario = formRegistro.email.value;
-            const contraseña = formRegistro.contraseña.value;
-
-            let mensajeRegistro = document.querySelector('#mensajeRegistro');
-            if (existeUsuario(usuario) === false) {
-                const nuevoSocio = {
-                    nombre: nombre,
-                    apellido: apellido,
-                    dni: dni,
-                    direccion: direccion,
-                    telefono: telefono,
-                    usuario: usuario,
-                    contraseña: contraseña,
-                    cuotas: [],
-                    reservas: [],
-                    foto: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
-                };
-                console.log(nuevoSocio);
-                Socios.push(nuevoSocio);
-
-                mensajeRegistro.innerHTML = 'Usuario registrado con exito. Inicie sesión';
-            } else {
-                mensajeRegistro.innerHTML = 'Usuario ya registrado. Inicie sesión';
-            }
-        });
+        Registrarse({socios: Socios});
     });
 
     const buttonLogin = document.querySelector('#btn-inicio');
     buttonLogin.addEventListener('click', () => {
         changeRoute('login');
-
-        const existeUsuarioContraseña = (user, password) => {
-            if (Socios.some(socio => {
-                return socio['usuario'] === user && socio['contraseña'] === password;
-            })) {
-                return true;
-            } else {
-                return false;
-            };
-        };
-
-        const busquedaDeSocio = (user, password) => {
-            let socioBusqueda = Socios.find(socio => socio.usuario === user && socio.contraseña === password);
-            return socioBusqueda;
-        }
 
         const cargarLogin = (e) => {
             e.preventDefault();
@@ -162,8 +68,8 @@ export const App = () => {
             const usuario = formLogin.usuario.value;
             const contraseña = formLogin.contraseña.value;
 
-            if (existeUsuarioContraseña(usuario, contraseña)) {
-                let socioEncontrado = busquedaDeSocio(usuario, contraseña)
+            if (ExisteUsuarioContraseña({user: usuario, password: contraseña, socios: Socios })) {
+                let socioEncontrado = BusquedaSocio({user: usuario, password: contraseña, socios: Socios})
                 localStorage.setItem('socio', JSON.stringify(socioEncontrado));
 
                 changeRoute('perfil');
