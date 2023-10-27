@@ -1,4 +1,3 @@
-// helpers
 import { ExisteUsuario } from "../helpers/existeUsuario.js";
 
 export const Registrarse = (props) => {
