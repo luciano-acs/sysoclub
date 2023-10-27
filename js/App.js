@@ -11,7 +11,7 @@ import { Socios } from "./helpers/data.js";
 //Helpers
 import { ExisteUsuarioContraseña } from "./helpers/existeUsuarioContraseña.js";
 import { BusquedaSocio } from "./helpers/busquedaSocio.js";
-import { Registrarse } from "./helpers/resgistrarse.js";
+import { Registrarse } from "./helpers/registrarse.js";
 
 export const App = () => {
     let appRoot = document.querySelector('#root');
