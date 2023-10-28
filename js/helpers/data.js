@@ -94,12 +94,7 @@ export const Socios = [
                 estado: 'pendiente',
             }
         ],
-        reservas: [{
-            lugar: 'cancha',
-            fecha: '01/01/2023',
-            hora: '15:00',
-            estado: 'asignada',
-        }]
+        reservas: []
     },
     {
         nombre: 'Daniela',
