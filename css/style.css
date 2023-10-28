@@ -283,12 +283,6 @@ main .reserva .card-container .card-reserva {
   background-color: #448b54;
   border-radius: 10px;
 }
-main .reserva .card-container .card-reserva h2 {
-  margin: 0 auto;
-  color: #000000;
-  font-size: 25px;
-  height: 50px;
-}
 main .reserva .card-container .card-reserva img {
   height: 200px;
   width: 100%;
@@ -296,11 +290,17 @@ main .reserva .card-container .card-reserva img {
 }
 main .reserva .card-container .card-reserva form {
   width: 100%;
-  height: 250px;
+  height: 300px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 10px 15px 15px 15px;
+}
+main .reserva .card-container .card-reserva form h2 {
+  margin: 0 auto;
+  color: #000000;
+  font-size: 25px;
+  width: 100%;
 }
 main .reserva .card-container .card-reserva form label {
   margin-bottom: 0;

@@ -7,35 +7,35 @@ export const Reserva = () => {
         <h2>Reservas</h2>
         <div class="card-container">
             <div class="card-reserva">
-                <img src="../assets/logo-sysoclub.png">
-                <h2>A</h2>                    
-                <form id="form-reserva">
+                <img src="../assets/logo-sysoclub.png">                                   
+                <form class="form-reserva">
+                    <h2 class="lugar">A</h2> 
                     <label for="fecha">Fecha</label>
-                    <input type="date" name="fecha" id="fecha" placeholder="Fecha">
+                    <input type="date" name="fecha" class="fecha" placeholder="Fecha">
                     <label for="hora">Hora</label>
-                    <input type="time" name="hora" id="hora" placeholder="Hora">
+                    <input type="time" name="hora" class="hora" placeholder="Hora">
                     <button class="btn-reserva" id="btn-reserva">Reservar</button>
                 </form>
             </div>
-                <div class="card-reserva">
-                <img src="../assets/logo-sysoclub.png">
-                <h2>B</h2>
-                <form id="form-reserva">
+            <div class="card-reserva">
+                <img src="../assets/logo-sysoclub.png">                
+                <form class="form-reserva">
+                    <h2 class="lugar">B</h2>
                     <label for="fecha">Fecha</label>
-                    <input type="date" name="fecha" id="fecha" placeholder="Fecha">
+                    <input type="date" name="fecha" class="fecha" placeholder="Fecha">
                     <label for="hora">Hora</label>
-                    <input type="time" name="hora" id="hora" placeholder="Hora">
+                    <input type="time" name="hora" class="hora" placeholder="Hora">
                     <button class="btn-reserva" id="btn-reserva">Reservar</button>
                 </form>
             </div>
             <div class="card-reserva">
                 <img src="../assets/logo-sysoclub.png">
-                <h2 id="lugar">C</h2>
-                <form id="form-reserva">
+                <form class="form-reserva">
+                    <h2 class="lugar">C</h2>
                     <label for="fecha">Fecha</label>
-                    <input type="date" name="fecha" id="fecha" placeholder="Fecha">
+                    <input type="date" name="fecha" class="fecha" placeholder="Fecha">
                     <label for="hora">Hora</label>
-                    <input type="time" name="hora" id="hora" placeholder="Hora">
+                    <input type="time" name="hora" class="hora" placeholder="Hora">
                     <button class="btn-reserva" id="btn-reserva">Reservar</button>
                 </form>
             </div>

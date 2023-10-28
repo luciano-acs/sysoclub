@@ -2,7 +2,7 @@
 import { Socios } from "./helpers/data.js";
 
 //Helpers
-import { Registrarse } from "./helpers/resgistrarse.js";
+import { Registrarse } from "./helpers/registrarse.js";
 import { CargarLogin } from "./helpers/cargarLogin.js";
 import { ChangeRoute } from "./helpers/routes/changeRoute.js";
 
