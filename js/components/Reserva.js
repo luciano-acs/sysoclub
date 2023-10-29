@@ -7,9 +7,9 @@ export const Reserva = () => {
         <h2>Reservas</h2>
         <div class="card-container">
             <div class="card-reserva">
-                <img src="../assets/logo-sysoclub.png">                                   
+                <img src="../assets/basquet.jpg">                                   
                 <form class="form-reserva">
-                    <h2 class="lugar">A</h2> 
+                    <h2 class="lugar">Cancha</h2> 
                     <label for="fecha">Fecha</label>
                     <input type="date" name="fecha" class="fecha" placeholder="Fecha">
                     <label for="hora">Hora</label>
@@ -18,9 +18,9 @@ export const Reserva = () => {
                 </form>
             </div>
             <div class="card-reserva">
-                <img src="../assets/logo-sysoclub.png">                
+                <img src="../assets/piscina.jpg">                
                 <form class="form-reserva">
-                    <h2 class="lugar">B</h2>
+                    <h2 class="lugar">Piscina</h2>
                     <label for="fecha">Fecha</label>
                     <input type="date" name="fecha" class="fecha" placeholder="Fecha">
                     <label for="hora">Hora</label>
@@ -29,9 +29,9 @@ export const Reserva = () => {
                 </form>
             </div>
             <div class="card-reserva">
-                <img src="../assets/logo-sysoclub.png">
+                <img src="../assets/salon.jpg">
                 <form class="form-reserva">
-                    <h2 class="lugar">C</h2>
+                    <h2 class="lugar">Salón</h2>
                     <label for="fecha">Fecha</label>
                     <input type="date" name="fecha" class="fecha" placeholder="Fecha">
                     <label for="hora">Hora</label>

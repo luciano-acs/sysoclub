@@ -12,11 +12,12 @@ export const App = () => {
 
     const mostrarIncio = () => {
         appRoot.innerHTML = '';
-        ChangeRoute({ routes: ['inicio', 'asociate'], appRoot: appRoot });
         if (localStorage.getItem('socioDatos')) {
             Datos();
+            ChangeRoute({ routes: ['inicio'], appRoot: appRoot });
             CargarPerfil({ socios: Socios, appRoot: appRoot });
         } else {
+            ChangeRoute({ routes: ['inicio', 'asociate'], appRoot: appRoot });
             let listNav = document.querySelector('#list-nav');
             let liNav = listNav.querySelectorAll('li');
 
