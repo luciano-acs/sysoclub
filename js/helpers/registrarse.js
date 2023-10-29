@@ -32,6 +32,7 @@ export const Registrarse = (props) => {
                 console.log(nuevoSocio);
                 socios.push(nuevoSocio);
 
+                formRegistro.reset();
                 mensajeRegistro.innerHTML = 'Usuario registrado con exito. Inicie sesión';
             } else {
                 mensajeRegistro.innerHTML = 'Usuario ya registrado. Inicie sesión';

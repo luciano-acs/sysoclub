@@ -1,6 +1,4 @@
-export const CargarCuota = (props) => {
-
-    let { socios, appRoot } = props;
+export const CargarCuota = () => {
 
     const tableCuotas = document.querySelector('#table');
     const body = tableCuotas.querySelector('#table-body');
@@ -12,7 +10,8 @@ export const CargarCuota = (props) => {
         });
     }
 
-    const socioActual = socios.find(socio => socio.usuario === JSON.parse(localStorage.getItem('socioDatos')).usuario);
+    // const socioActual = socios.find(socio => socio.usuario === JSON.parse(localStorage.getItem('socioDatos')).usuario);
+    const socioActual = JSON.parse(localStorage.getItem('socioDatos'));
 
     socioActual.cuotas.forEach((cuota) => {
         const fila = document.createElement('tr');
@@ -52,21 +51,18 @@ export const CargarCuota = (props) => {
     const btnPagar = document.querySelectorAll('.btn-pagar');
     btnPagar.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            console.log(e.target);
             let fila = btn.parentNode.parentNode;
             let celdaEstado = fila.cells[4];
             celdaEstado.innerHTML = `<i class="fa-solid fa-check"></i>`;
             btn.setAttribute('disabled', 'disabled');
 
-            socios.forEach(socio => {
-                if (socio === socioActual) {
-                    socio.cuotas.forEach(cuota => {
-                        if (cuota.concepto === fila.cells[0].innerHTML) {
-                            cuota.estado = 'pagada';
-                        }
-                    });
+            socioActual.cuotas.forEach(cuota => {
+                if (cuota.concepto === fila.cells[0].innerHTML) {
+                    cuota.estado = 'pagada';
                 }
             });
+
+            localStorage.setItem('socioDatos', JSON.stringify(socioActual));
         });
     });
 }

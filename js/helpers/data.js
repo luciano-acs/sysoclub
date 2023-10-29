@@ -94,7 +94,25 @@ export const Socios = [
                 estado: 'pendiente',
             }
         ],
-        reservas: []
+        reservas: [
+        //     {
+        //     lugar: 'A',
+        //     fecha: '15/01/2023',
+        //     hora: '15:00',
+        //     estado: 'Disponible'
+        // },
+        // {
+        //     lugar: 'B',
+        //     fecha: '15/01/2023',
+        //     hora: '16:00',
+        //     estado: 'Disponible'
+        // },
+        // {
+        //     lugar: 'C',
+        //     fecha: '17/01/2023',
+        //     hora: '17:00',
+        //     estado: 'Disponible'}
+    ]
     },
     {
         nombre: 'Daniela',

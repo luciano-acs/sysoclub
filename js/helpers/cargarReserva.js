@@ -2,45 +2,47 @@ export const cargarReserva = (props) => {
 
     let { socios } = props;
 
-    const socioActual = socios.find(socio => socio.usuario === JSON.parse(localStorage.getItem('socioDatos')).usuario);
+    // const socioActual = socios.find(socio => socio.usuario === JSON.parse(localStorage.getItem('socioDatos')).usuario);
+    const socioActual = JSON.parse(localStorage.getItem('socioDatos'));
 
-    const reservas = [];
+    socioActual.reservas.forEach(reserva => {
+        const formReserva = document.querySelectorAll('.form-reserva');
+        formReserva.forEach(form => {
+            if(form.querySelector('.lugar').innerHTML === reserva.lugar && reserva.estado === 'Reservado') {
+                form.querySelector('.fecha').value = reserva.fecha;
+                form.querySelector('.hora').value = reserva.hora;
+                
+                let btnReserva = form.querySelector('.btn-reserva');
+                btnReserva.innerHTML = reserva.estado;
+                btnReserva.disabled = true;                
+            }
+        });
+    });
+
     const btnReserva = document.querySelectorAll('.btn-reserva');
     btnReserva.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const formReserva = document.querySelectorAll('.form-reserva');
-            formReserva.forEach(form => {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const fecha = form.querySelector('.fecha').value;
-                    const hora = form.querySelector('.hora').value;
-                    const lugar = form.querySelector('.lugar').textContent;
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            let lugar = btn.parentElement.querySelector('.lugar').innerHTML;
+            let fecha = btn.parentElement.querySelector('.fecha').value;
+            let hora = btn.parentElement.querySelector('.hora').value;
+            let estado = 'Reservado';
 
-                    const reserva = {
-                        lugar: lugar,
-                        fecha: fecha,
-                        hora: hora,
-                        estado: 'asignada'
-                    };
+            let reserva = {
+                lugar,
+                fecha,
+                hora,
+                estado
+            }
 
-                    let reservaExistente = localStorage.getItem('reservas');
-                    reservaExistente = reservaExistente ? JSON.parse(reservaExistente) : [];
+            socioActual.reservas.push(reserva);
 
-                    const existeReserva = reservaExistente.find(reserva => reserva.lugar === lugar);
-                    if (!existeReserva) {
-                        socios.forEach(socio => {
-                            if (socio === socioActual) {
-                                socio.reservas.push(reserva);
-                            }
-                        });
+            localStorage.setItem('socioDatos', JSON.stringify(socioActual));
 
-                        reservas.push(reserva);
-                        localStorage.setItem('reservas', JSON.stringify(reservas));
-                        console.log(socios);
-                    }
-                    btn.setAttribute('disabled', 'disabled');
-                });
-            });
+            btn.innerHTML = 'Reservado';
+            btn.disabled = true;
         });
     });
 }
+
+
