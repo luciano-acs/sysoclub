@@ -307,7 +307,7 @@ main .reserva .card-container .card-reserva form label {
   height: 5px;
   font-weight: bold;
 }
-main .reserva .card-container .card-reserva form input {
+main .reserva .card-container .card-reserva form input, main .reserva .card-container .card-reserva form select {
   width: 100%;
   height: 25px;
 }
