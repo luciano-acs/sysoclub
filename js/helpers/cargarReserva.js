@@ -1,8 +1,91 @@
 export const cargarReserva = (props) => {
 
-    let { socios } = props;
+    let { socios, horarios } = props;
 
     const socioActual = JSON.parse(localStorage.getItem('socioDatos'));
+
+    console.log('Horarios: ', horarios);
+
+    const horariosCancha = (fecha) => {
+        let horariosCancha = [];
+        horarios.forEach(horario => {
+            if(horario.lugar === 'Cancha'){       
+                horario.disponibilidad.forEach(hora => {
+                    if(hora.fecha === fecha && hora.disponibilidad === true){
+                        horariosCancha.push(hora.hora);
+                    }
+                });       
+            }
+        });
+        return horariosCancha;
+    }
+    const horariosPiscina = (fecha) => {
+        let horariosPiscina = [];
+        horarios.forEach(horario => {
+            if(horario.lugar === 'Piscina'){       
+                horario.disponibilidad.forEach(hora => {
+                    if(hora.fecha === fecha && hora.disponibilidad === true){
+                        horariosPiscina.push(hora.hora);
+                    }
+                });    
+            }
+        });
+        return horariosPiscina;
+    }
+    const horariosSalon = (fecha) => {
+        let horariosSalon = [];
+        horarios.forEach(horario => {
+            if(horario.lugar === 'Salón'){       
+                horario.disponibilidad.forEach(hora => {
+                    if(hora.fecha === fecha && hora.disponibilidad === true){
+                        horariosSalon.push(hora.hora);
+                    }
+                });    
+            }
+        });
+        return horariosSalon;
+    }
+
+    const inputFecha = document.querySelectorAll('.fecha');
+    inputFecha.forEach(input => {
+        input.addEventListener('change', (e) => {
+            e.preventDefault();
+            let fecha = input.value;
+            let lugar = input.parentElement.querySelector('.lugar').innerHTML;
+
+            if(lugar === 'Cancha'){
+                let selectCancha = input.parentElement.querySelector('#selectCancha');
+                selectCancha.innerHTML = '';
+
+                const horarios = horariosCancha(fecha);
+                console.log('Horarios cancha' , horarios);
+
+                horarios.forEach(hora => {
+                    let option = document.createElement('option');
+                    option.innerHTML = hora;
+                    selectCancha.appendChild(option);
+                });
+            }else if(lugar === 'Piscina'){
+                let selectPiscina = input.parentElement.querySelector('#selectPiscina');
+                selectPiscina.innerHTML = '';
+
+                horariosPiscina(fecha).forEach(hora => {
+                    let option = document.createElement('option');
+                    option.innerHTML = hora;
+                    selectPiscina.appendChild(option);
+                });
+            }else{
+                let selectSalon = input.parentElement.querySelector('#selectSalon');
+                selectSalon.innerHTML = '';
+
+                horariosSalon(fecha).forEach(hora => {
+                    let option = document.createElement('option');
+                    option.innerHTML = hora;
+                    selectSalon.appendChild(option);
+                });
+            }
+        });
+    });
 
     socioActual.reservas.forEach(reserva => {
         const formReserva = document.querySelectorAll('.form-reserva');

@@ -2,6 +2,7 @@ import { ChangeRoute } from "./routes/changeRoute.js";
 import { CargarCuota } from "./cargarCuota.js";
 import { CerrarSesion } from "./cerrarSesion.js";
 import { cargarReserva } from "./cargarReserva.js";
+import { Horarios } from "../helpers/horarios.js";
 
 export const CargarPerfil = (props) => {
     let { socios, appRoot } = props;
@@ -22,7 +23,7 @@ export const CargarPerfil = (props) => {
         const btnReserva = document.querySelector('#btn-reserva');
         btnReserva.addEventListener('click', () => {
             ChangeRoute({ routes: ['reserva'], appRoot: appRoot });
-            cargarReserva({ socios: socios });
+            cargarReserva({ socios: socios, horarios: Horarios });
         });
 
         const btnCerrar = document.querySelector('#btn-cerrar');
