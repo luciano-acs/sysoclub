@@ -132,21 +132,25 @@ export const cargarReserva = (props) => {
             let hora = btn.parentElement.querySelector('.hora').value;
             let estado = 'Reservado';
 
-            let reserva = {
-                lugar,
-                fecha,
-                hora,
-                estado
-            }
-
-            socioActual.reservas.push(reserva);
-
-            localStorage.setItem('socioDatos', JSON.stringify(socioActual));
-
-            btn.innerHTML = 'Reservado';
-            btn.parentElement.querySelector('.fecha').disabled = true;
-            btn.parentElement.querySelector('.hora').disabled = true;
-            btn.disabled = true;
+            if(fecha !== ''){
+                let reserva = {
+                    lugar,
+                    fecha,
+                    hora,
+                    estado
+                }
+    
+                socioActual.reservas.push(reserva);
+    
+                localStorage.setItem('socioDatos', JSON.stringify(socioActual));
+    
+                btn.innerHTML = 'Reservado';
+                btn.parentElement.querySelector('.fecha').disabled = true;
+                btn.parentElement.querySelector('.hora').disabled = true;
+                btn.disabled = true;
+            }else{
+                alert('Debe seleccionar una fecha');
+            }            
         });
     });
 }

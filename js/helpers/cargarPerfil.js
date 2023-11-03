@@ -11,7 +11,7 @@ export const CargarPerfil = (props) => {
     fotoID.addEventListener('click', () => {
         ChangeRoute({ routes: ['perfil'], appRoot: appRoot });
         botones();
-    });    
+    });
 
     const botones = () => {
         const btnCuota = document.querySelector('#btn-cuota');

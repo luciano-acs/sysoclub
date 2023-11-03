@@ -46,6 +46,7 @@ export const Registrarse = (props) => {
         const telefono = formRegistro.telefono.value;
         const usuario = formRegistro.email.value;
         const contraseña = formRegistro.contraseña.value;
+        const fecha = new Date();
 
         let mensajeRegistro = document.querySelector('#mensajeRegistro');
         if (ExisteUsuario({ user: usuario, socios: socios }) === false) {
@@ -59,6 +60,8 @@ export const Registrarse = (props) => {
                 contraseña: contraseña,
                 cuotas: generarCuotas(),
                 reservas: [],
+                estado: 'activo',
+                fechaAlta: fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear(),
                 foto: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
             };
             console.log(nuevoSocio);

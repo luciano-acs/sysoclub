@@ -94,7 +94,9 @@ export const Socios = [
                 estado: 'pendiente',
             }
         ],
-        reservas: []
+        reservas: [],
+        estado: 'activo',
+        fechaActivo: '15/01/2021'
     },
     {
         nombre: 'Daniela',
@@ -106,7 +108,8 @@ export const Socios = [
         contraseña: 'danimendez698',
         foto: '',
         cuotas: [],
-        reservas: []
+        reservas: [],
+        estado: 'activo'
     },
     {
         nombre: 'Javier',
@@ -118,6 +121,7 @@ export const Socios = [
         usuario: 'donJavier@gmail.com',
         contraseña: 'javierDiaz759',
         cuotas: [],
-        reservas: []
+        reservas: [],
+        estado: 'activo'
     }
 ];
