@@ -3,7 +3,6 @@ import { Routes } from '/js/helpers/routes/routes.js';
 
 export const ChangeRoute = (props) => {
 
-    console.log(props);
     let { routes, appRoot } = props;
 
     const pages = [];

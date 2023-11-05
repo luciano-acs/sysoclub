@@ -7,14 +7,9 @@ export const Perfil = () => {
     <div class="carnetDigital">
         <div class="carnet">
             <div class="item1">SYSOCLUB</div>
-            <div class="item2"><img src="${JSON.parse(localStorage.getItem('socioDatos')).foto}"></div>             
-            <div class="item3">
-            <p>Nombre: ${JSON.parse(localStorage.getItem('socioDatos')).nombre}</p>
-            <p>Apellido: ${JSON.parse(localStorage.getItem('socioDatos')).apellido}</p>
-            <p>DNI: ${JSON.parse(localStorage.getItem('socioDatos')).dni}</p>
-            <p>Inicio de Actividades: ${JSON.parse(localStorage.getItem('socioDatos')).fechaNacimiento}</p>                
-            </div>
-            <div class="item4">Estado: ${JSON.parse(localStorage.getItem('socioDatos')).estado}</div>
+            <div class="item2"></div>             
+            <div class="item3"></div>
+            <div class="item4"></div>
         </div>
     </div>
     <div class="btn-perfil">

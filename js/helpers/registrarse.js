@@ -48,7 +48,6 @@ export const Registrarse = (props) => {
         const contraseña = formRegistro.contraseña.value;
         const fecha = new Date();
 
-        let mensajeRegistro = document.querySelector('#mensajeRegistro');
         if (ExisteUsuario({ user: usuario, socios: socios }) === false) {
             const nuevoSocio = {
                 nombre: nombre,
@@ -56,21 +55,30 @@ export const Registrarse = (props) => {
                 dni: dni,
                 direccion: direccion,
                 telefono: telefono,
+                foto: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
                 usuario: usuario,
                 contraseña: contraseña,
                 cuotas: generarCuotas(),
                 reservas: [],
                 estado: 'activo',
-                fechaAlta: fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear(),
-                foto: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+                fechaActivo: fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear(),
+                
             };
             console.log(nuevoSocio);
             socios.push(nuevoSocio);
 
             formRegistro.reset();
-            mensajeRegistro.innerHTML = 'Usuario registrado con exito. Inicie sesión';
+            Swal.fire({
+                icon: 'success',
+                title: 'Usuario registrado con exito',
+                text: `Inicie Sesión para continuar`,
+            })
         } else {
-            mensajeRegistro.innerHTML = 'Usuario ya registrado. Inicie sesión';
+            Swal.fire({
+                icon: 'info',
+                title: 'Usuario ya registrado',
+                text: `Inicie Sesión para continuar`,
+            })
         }
     });
 };

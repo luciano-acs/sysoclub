@@ -104,12 +104,13 @@ export const Socios = [
         dni: 20145698,
         direccion: '',
         telefono: '',
+        foto: '',
         usuario: 'danimendez@gmail.com',
         contraseña: 'danimendez698',
-        foto: '',
         cuotas: [],
         reservas: [],
-        estado: 'activo'
+        estado: 'activo',
+        fechaActivo: '15/01/2021'
     },
     {
         nombre: 'Javier',
@@ -122,6 +123,7 @@ export const Socios = [
         contraseña: 'javierDiaz759',
         cuotas: [],
         reservas: [],
-        estado: 'activo'
+        estado: 'activo',
+        fechaActivo: '15/01/2021'
     }
 ];

@@ -27,7 +27,8 @@ export const CargarLogin = (props) => {
             const reservasE = socioEncontrado.reservas;
             const fecha = socioEncontrado.fechaActivo;
             const dni = socioEncontrado.dni;
-
+            const estado = socioEncontrado.estado;
+            
             const socioDatos = {
                 nombre: nombreE,
                 apellido: apellidoE,
@@ -36,7 +37,8 @@ export const CargarLogin = (props) => {
                 cuotas: cuotasE,
                 reservas: reservasE,
                 fecha: fecha,
-                dni: dni
+                dni: dni,
+                estado: estado
             }
             localStorage.setItem('socioDatos', JSON.stringify(socioDatos));
 
