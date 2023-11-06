@@ -10,14 +10,16 @@ export const Registrarse = (props) => {
         let cuotas = [];
         let mes = 1;
 
-        for (let i = 12; i > 0; i--) {
-            //let dia = Math.round(Math.random() * 28)+1;            
+        for (let i = 12; i > 0; i--) {           
             if (i < cantidadCuotasAdeudadas) {
                 let cuota = {
                     concepto: `Cuota ${mes}`,
                     mes: mes,
                     año: '2023',
+                    valor: "$2000",
                     fecha: `${15}/${mes}/2023`,
+                    pagado: 0,
+                    fechaPago: '-',
                     estado: 'pendiente',
                 };
                 cuotas.push(cuota);
@@ -26,7 +28,10 @@ export const Registrarse = (props) => {
                     concepto: `Cuota ${mes}`,
                     mes: mes,
                     año: '2023',
+                    valor: "$2000",
                     fecha: `${15}/${mes}/2023`,
+                    pagado: 1,
+                    fechaPago: `${15}/${mes}/2023`,
                     estado: 'pago',
                 };
                 cuotas.push(cuota);
@@ -60,11 +65,19 @@ export const Registrarse = (props) => {
                 contraseña: contraseña,
                 cuotas: generarCuotas(),
                 reservas: [],
-                estado: 'activo',
-                fechaActivo: fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear(),
-                
+                estado: '',
+                fechaActivo: fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear(),                
             };
-            console.log(nuevoSocio);
+            
+            let cantidad = 0;
+            nuevoSocio.cuotas.forEach((cuota) => {
+                if (cuota.estado === 'pago') {
+                    cantidad++;
+                }
+            });
+
+            cantidad < (fecha.getMonth() + 1) ? nuevoSocio.estado = 'inactivo' : nuevoSocio.estado = 'activo';
+
             socios.push(nuevoSocio);
 
             formRegistro.reset();

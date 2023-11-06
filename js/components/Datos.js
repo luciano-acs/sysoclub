@@ -12,6 +12,11 @@ export const Datos = () => {
     liFoto.setAttribute('id', 'id-foto');
     liFoto.innerHTML = `<img src="${JSON.parse(localStorage.getItem('socioDatos')).foto}" alt="usuario">`;
 
+    let textoPerfil = document.createElement('p');
+    textoPerfil.setAttribute('id', 'texto-perfil');
+    textoPerfil.textContent = 'Perfil';
+    liFoto.appendChild(textoPerfil);
+
     listNav.appendChild(liNombre);
     listNav.appendChild(liFoto);
 

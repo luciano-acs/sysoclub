@@ -10,7 +10,10 @@ export const Pago = () => {
                             <th scope="col">Cuota</th>
                             <th scope="col">Mes</th>
                             <th scope="col">Año</th>
+                            <th scope="col">Valor</th>
                             <th scope="col">Vencimiento</th>
+                            <th scope="col">Pagado</th>
+                            <th scope="col">Fecha de pago</th>
                             <th scope="col">Estado</th>
                             <th scope="acciones">Acciones</th>
                         </tr>

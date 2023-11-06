@@ -31,6 +31,15 @@ export const CargarPerfil = (props) => {
             CerrarSesion();
         });
 
+        let cantidadCuotasPagas = 0;
+        const socioActual = JSON.parse(localStorage.getItem('socioDatos'));
+        console.log(socioActual)
+        socioActual.cuotas.forEach(cuota => {
+            if (cuota.estado === 'pagada') {
+                cantidadCuotasPagas++;
+            }
+        });
+
         const item2 = document.querySelector('.item2');
         const item3 = document.querySelector('.item3');
         const item4 = document.querySelector('.item4');
@@ -41,7 +50,7 @@ export const CargarPerfil = (props) => {
         <p>DNI: ${localStorage.getItem('socioDatos') ?  JSON.parse(localStorage.getItem('socioDatos')).dni : null}</p>
         <p>Inicio de Actividades: ${localStorage.getItem('socioDatos') ? JSON.parse(localStorage.getItem('socioDatos')).fecha : null}</p>
         `;
-        item4.innerHTML = `Estado: ${localStorage.getItem('socioDatos') ? JSON.parse(localStorage.getItem('socioDatos')).estado : null}`;
+        item4.innerHTML = `Estado: ${cantidadCuotasPagas > new Date().getMonth() ? 'Activo' : 'Inactivo'}`;
     }
     localStorage.getItem('socioDatos') ? botones() : null;
 }
