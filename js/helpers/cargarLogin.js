@@ -6,6 +6,7 @@ import { CargarPerfil } from "./cargarPerfil.js";
 
 export const CargarLogin = (props) => {
 
+    // Este codigo permite validar si el usuario ingresado por el usuario existe en la base de datos. En caso de que exista, se carga el perfil del socio en el DOM
     let { socios, appRoot } = props;
 
     const formLogin = document.querySelector('#form-login');

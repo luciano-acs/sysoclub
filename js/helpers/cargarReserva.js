@@ -75,22 +75,29 @@ export const cargarReserva = (props) => {
         });
     });
 
+
     // En este evento tiene en cuenta el socio actual verificando si para el mismo existe reservas y modificando el boton en este caso.
+
+    const fechaActual = new Date();
     socioActual.reservas.forEach(reserva => {
         const formReserva = document.querySelectorAll('.form-reserva');
         formReserva.forEach(form => {
             if (form.querySelector('.lugar').innerHTML === reserva.lugar && reserva.estado === 'Reservado') {
-                form.querySelector('.fecha').value = reserva.fecha;
-                let select = form.querySelector(('#select' + reserva.lugar))
-                let option = document.createElement('option');
-                option.innerHTML = reserva.hora;
-                select.appendChild(option);
 
-                let btnReserva = form.querySelector('.btn-reserva');
-                btnReserva.innerHTML = reserva.estado;
-                btnReserva.disabled = true;
-                form.querySelector('.fecha').disabled = true;
-                form.querySelector('.hora').disabled = true;
+                let fechaReserva = new Date(reserva.fecha);
+                if (fechaReserva > fechaActual) {
+                    form.querySelector('.fecha').value = reserva.fecha;
+                    let select = form.querySelector(('#select' + reserva.lugar))
+                    let option = document.createElement('option');
+                    option.innerHTML = reserva.hora;
+                    select.appendChild(option);
+
+                    let btnReserva = form.querySelector('.btn-reserva');
+                    btnReserva.innerHTML = reserva.estado;
+                    btnReserva.disabled = true;
+                    form.querySelector('.fecha').disabled = true;
+                    form.querySelector('.hora').disabled = true;
+                }
             }
         });
     });
@@ -104,7 +111,7 @@ export const cargarReserva = (props) => {
         });
     }
 
-    // En este evento permite capturar el boton de la reserva guardando la misma en el local storage y modificando el estado del boton.
+    // En este evento permite capturar el boton de la reserva guardando la misma en el local storage y modificando el estado del boton. Se realizan todas las validaciones pertinentes como inpus vacion, fecha posterior a la actual y reserva existente.
     const btnReserva = document.querySelectorAll('.btn-reserva');
     btnReserva.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -117,26 +124,36 @@ export const cargarReserva = (props) => {
             console.log(existeReserva(lugar, fecha, hora));
 
             if (fecha !== '' && hora !== '') {
+                let fechaActual = new Date();
                 if (!existeReserva(lugar, fecha, hora)) {
-                    let reserva = {
-                        lugar,
-                        fecha,
-                        hora,
-                        estado
+                    let fechaReserva = new Date(fecha);
+                    if (fechaReserva > fechaActual) {
+                        let reserva = {
+                            lugar,
+                            fecha,
+                            hora,
+                            estado
+                        }
+                        socioActual.reservas.push(reserva);
+
+                        localStorage.setItem('socioDatos', JSON.stringify(socioActual));
+
+                        btn.innerHTML = 'Reservado';
+                        btn.parentElement.querySelector('.fecha').disabled = true;
+                        btn.parentElement.querySelector('.hora').disabled = true;
+                        btn.disabled = true;
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Reserva realizada',
+                            text: `Se realizo la reserva de ${lugar} para el ${new Date(fecha).getDate() + '/' + (new Date().getMonth(fecha) + 1) + '/' + new Date(fecha).getFullYear()} a las ${hora}`,
+                        })
+                    }else{
+                        Swal.fire({
+                            icon: 'info',
+                            title: 'Fecha incorrecta',
+                            text: 'La fecha seleccionada debe ser posterior a la fecha actual'
+                        })
                     }
-                    socioActual.reservas.push(reserva);
-
-                    localStorage.setItem('socioDatos', JSON.stringify(socioActual));
-
-                    btn.innerHTML = 'Reservado';
-                    btn.parentElement.querySelector('.fecha').disabled = true;
-                    btn.parentElement.querySelector('.hora').disabled = true;
-                    btn.disabled = true;
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Reserva realizada',
-                        text: `Se realizo la reserva de ${lugar} para el ${fecha} a las ${hora}`,
-                    })
                 } else {
                     Swal.fire({
                         icon: 'info',

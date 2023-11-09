@@ -2,9 +2,11 @@ import { ChangeRoute } from "./routes/changeRoute.js";
 import { CargarCuota } from "./cargarCuota.js";
 import { CerrarSesion } from "./cerrarSesion.js";
 import { cargarReserva } from "./cargarReserva.js";
-//import { Horarios } from "../helpers/horarios.js";
 
 export const CargarPerfil = (props) => {
+
+    // Lo que se hace en este codigo es cargar el perfil del socio actual en el DOM. Habilitanto los distintos botones segun sea el caso (socio activo o no) y mostrando el carnet del socio con sus datos personales
+
     let { socios, appRoot } = props;
 
     const fotoID = document.querySelector('#id-foto');
@@ -14,6 +16,9 @@ export const CargarPerfil = (props) => {
     });
 
     const botones = () => {
+        let cantidadCuotasPagas = 0;
+        const socioActual = JSON.parse(localStorage.getItem('socioDatos'));
+
         const btnCuota = document.querySelector('#btn-cuota');
         btnCuota.addEventListener('click', () => {
             ChangeRoute({ routes: ['pago'], appRoot: appRoot });
@@ -24,16 +29,18 @@ export const CargarPerfil = (props) => {
         btnReserva.addEventListener('click', () => {
             ChangeRoute({ routes: ['reserva'], appRoot: appRoot });
             cargarReserva({ socios: socios});
+        });        
+
+        const btnInformacion = document.querySelector('#btn-informacion');
+        btnInformacion.addEventListener('click', () => {
+            ChangeRoute({ routes: ['informacion'], appRoot: appRoot });
         });
 
         const btnCerrar = document.querySelector('#btn-cerrar');
         btnCerrar.addEventListener('click', () => {
             CerrarSesion();
-        });
-
-        let cantidadCuotasPagas = 0;
-        const socioActual = JSON.parse(localStorage.getItem('socioDatos'));
-        console.log(socioActual)
+        });        
+        
         socioActual.cuotas.forEach(cuota => {
             if (cuota.estado === 'pagada') {
                 cantidadCuotasPagas++;
@@ -51,6 +58,12 @@ export const CargarPerfil = (props) => {
         <p>Inicio de Actividades: ${localStorage.getItem('socioDatos') ? JSON.parse(localStorage.getItem('socioDatos')).fecha : null}</p>
         `;
         item4.innerHTML = `Estado: ${cantidadCuotasPagas > new Date().getMonth() ? 'Activo' : 'Inactivo'}`;
+
+        if(cantidadCuotasPagas > new Date().getMonth()){
+            btnReserva.disabled = false;
+        }else{
+            btnReserva.disabled = true;
+        }
     }
     localStorage.getItem('socioDatos') ? botones() : null;
 }

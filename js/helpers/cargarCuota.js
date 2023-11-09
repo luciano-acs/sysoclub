@@ -1,8 +1,11 @@
 export const CargarCuota = () => {
 
+    // Este codigo permite cargar las cuotas del socio actual en el DOM. Tambien permite pagar las cuotas pendientes y mostrar el comprobante de pago. Se realizan los calculos de los impuestos correspondientes ante el caso de que se abone cuotas atrasadas.
+
     const tableCuotas = document.querySelector('#table');
     const body = tableCuotas.querySelector('#table-body');
 
+    // Fragmento para evitar duplicacion de filas
     let cantidadFilas = tableCuotas.rows.length;
     if (cantidadFilas >= 12) {
         forEach(body.childNodes, (child) => {
@@ -12,6 +15,7 @@ export const CargarCuota = () => {
 
     const socioActual = JSON.parse(localStorage.getItem('socioDatos'));
 
+    // Carga de datos en la tabla de acuerdo a las cuotas del socio actual
     socioActual.cuotas.forEach((cuota) => {
         const fila = document.createElement('tr');
 
@@ -23,13 +27,13 @@ export const CargarCuota = () => {
         mesCelda.innerHTML = `${cuota.mes}`
         fila.appendChild(mesCelda);
 
-        const valorCelda = document.createElement('td');
-        valorCelda.innerHTML = `${cuota.valor}`
-        fila.appendChild(valorCelda);
-
         const añoCelda = document.createElement('td');
         añoCelda.innerHTML = `${cuota.año}`
         fila.appendChild(añoCelda);
+
+        const valorCelda = document.createElement('td');
+        valorCelda.innerHTML = `${cuota.valor}`
+        fila.appendChild(valorCelda);        
 
         const fechaCelda = document.createElement('td');
         fechaCelda.innerHTML = `${cuota.fecha}`
@@ -74,6 +78,7 @@ export const CargarCuota = () => {
         body.appendChild(fila);
     });
 
+    // Funcion para calcular los impuestos de las cuotas atrasadas
     const impuestos = (mesCuota) => {
         let mesActual = new Date().getMonth();
         let impuesto = (mesActual - mesCuota) * 200;
@@ -86,7 +91,7 @@ export const CargarCuota = () => {
         return impuesto;
     }
 
-
+    // Funcion para pagar las cuotas pendientes
     const btnPagar = document.querySelectorAll('.btn-pagar');
     btnPagar.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -100,19 +105,25 @@ export const CargarCuota = () => {
             fechaPago.innerHTML = fecha;
 
             btn.setAttribute('disabled', 'disabled');
-
+            
             socioActual.cuotas.forEach(cuota => {
                 
                 if (cuota.concepto === fila.cells[0].innerHTML) {
                     cuota.estado = 'pagada';
                     cuota.pagado = celdaPagado.innerHTML;
                     cuota.fechaPago = fecha;
-                }
-                if(cuota.estado === 'pagado') {
-                    cantidadCuotasPagas++;
+
                 }
             });
 
+            Swal.fire({
+                icon: 'success',
+                title: 'Cuota pagada',
+                text: `Se pago la cuota del periodo ${fila.cells[1].innerHTML}/${fila.cells[2].innerHTML}
+                por un valor de ${fila.cells[5].innerHTML}.\nNumero de comprobante: 0000002023${Math.floor(Math.random()*90)+10}`,
+            })
+
+            btn.innerHTML = 'Pagado';
             localStorage.setItem('socioDatos', JSON.stringify(socioActual));
             console.log(socioActual.cuotas)
         });

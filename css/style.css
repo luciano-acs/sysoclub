@@ -400,6 +400,33 @@ main .reserva .card-container .card-reserva form .btn-reserva {
   border: 1px solid #000000;
   border-radius: 10px;
 }
+main .informacion {
+  width: 90%;
+  min-height: 350px;
+  background-color: rgba(11, 52, 90, 0.9);
+  margin: 0 auto;
+  border-radius: 0 0 10px 10px;
+}
+main .informacion h2 {
+  color: #ffffff;
+  text-align: center;
+  padding: 15px;
+  text-transform: uppercase;
+}
+main .informacion h3 {
+  color: #ffffff;
+  padding-left: 15px;
+}
+main .informacion p {
+  color: #ffffff;
+  padding-left: 15px;
+  padding-bottom: 25px;
+}
+main .informacion ul {
+  color: #ffffff;
+  padding-left: 25px;
+  padding-bottom: 25px;
+}
 main .recordatorio {
   display: flex;
   flex-direction: column;

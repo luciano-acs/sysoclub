@@ -4,6 +4,7 @@ export const Registrarse = (props) => {
 
     let { socios } = props;
 
+    // Esta funcion crea cuotas de forma aleatoria al momento de crear un nuevo socio
     const generarCuotas = () => {
         let cantidadCuotasAdeudadas = Math.round(Math.random() * 12);
 
@@ -41,6 +42,7 @@ export const Registrarse = (props) => {
         return cuotas;
     };
 
+    // Form registro donde se capturan los datos del nuevo socio validando si el mismo ya existia en la base de datos
     const formRegistro = document.querySelector('#form-register');
     formRegistro.addEventListener('submit', (e) => {
         e.preventDefault();

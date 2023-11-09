@@ -15,7 +15,7 @@ export const Perfil = () => {
     <div class="btn-perfil">
         <button id="btn-cuota"><p>Cuotas</p></button>
         <button id="btn-reserva"><p>Reservas</p></button>
-        <button id="btn-informacion" disabled><p>Información</p></button>   
+        <button id="btn-informacion"><p>Información</p></button>   
         <button id="btn-cerrar"><p>Cerrar Sesión</p></button> 
     </div>         
     `

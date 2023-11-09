@@ -1,4 +1,7 @@
 export const CerrarSesion = () => {
+
+    // Este codigo permite modificar el nav acorde a si se encuentra o no iniciada la sesion del socio actual
+
     localStorage.clear();
     let listNav = document.querySelector('#list-nav');
     let liNav = listNav.querySelectorAll('li');
