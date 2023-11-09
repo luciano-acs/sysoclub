@@ -31,9 +31,9 @@ export const Registrarse = (props) => {
                     año: '2023',
                     valor: "$2000",
                     fecha: `${15}/${mes}/2023`,
-                    pagado: 1,
+                    pagado: '$2000',
                     fechaPago: `${15}/${mes}/2023`,
-                    estado: 'pago',
+                    estado: 'pagada',
                 };
                 cuotas.push(cuota);
             }

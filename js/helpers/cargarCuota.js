@@ -70,7 +70,7 @@ export const CargarCuota = () => {
             fila.appendChild(estadoCelda);
 
             const btnsCelda = document.createElement('td');
-            btnsCelda.innerHTML = `<button class="btn-pagar">Pagar</button>`;
+            btnsCelda.innerHTML = `<button class="btn-pagar">Pagado</button>`;
             btnsCelda.querySelector('.btn-pagar').setAttribute('disabled', 'disabled');
             fila.appendChild(btnsCelda);
         }        
@@ -112,7 +112,6 @@ export const CargarCuota = () => {
                     cuota.estado = 'pagada';
                     cuota.pagado = celdaPagado.innerHTML;
                     cuota.fechaPago = fecha;
-
                 }
             });
 
@@ -125,7 +124,6 @@ export const CargarCuota = () => {
 
             btn.innerHTML = 'Pagado';
             localStorage.setItem('socioDatos', JSON.stringify(socioActual));
-            console.log(socioActual.cuotas)
         });
     });
 }

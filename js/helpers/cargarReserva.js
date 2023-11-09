@@ -121,8 +121,6 @@ export const cargarReserva = (props) => {
             let hora = btn.parentElement.querySelector('.hora').value;
             let estado = 'Reservado';
 
-            console.log(existeReserva(lugar, fecha, hora));
-
             if (fecha !== '' && hora !== '') {
                 let fechaActual = new Date();
                 if (!existeReserva(lugar, fecha, hora)) {
